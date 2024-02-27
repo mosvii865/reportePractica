@@ -1,0 +1,37 @@
+#morado{
+    background-color: rgb(178, 100, 251);
+    color: rgb(255, 255, 255);
+}
+
+#morado:hover{
+    color: rgb(249, 243, 255);
+    background-color: rgb(190, 116, 255);
+}
+
+#cafe{
+    background-color: rgb(219, 188, 148);
+}
+
+#cafe:hover{
+    color: rgb(55, 55, 55);
+    background-color: rgb(189, 143, 79);
+}
+
+#verde{
+    background-color: rgb(104, 243, 53);
+}
+
+#verde:hover{
+    color: rgb(137, 255, 94);
+    background-color: rgb(113, 180, 90);
+}
+
+#azul{
+    background-color: aqua;
+    color: rgb(34, 34, 34);
+}
+
+#azul:hover{
+    color: rgb(218, 255, 255);
+    background-color: rgb(70, 178, 236);
+}
