@@ -104,6 +104,7 @@ function init() {
         {
           fill: 'white', // the default fill, if there is no data bound value
           stroke: 'Coral',
+          strokeWidth: 5,
           portId: '',
           cursor: 'pointer', // the Shape is the port, not the whole Node
           // allow all kinds of links from and to this port
@@ -119,8 +120,8 @@ function init() {
       $(go.TextBlock,
         {
           font: 'bold 14px sans-serif',
-          stroke: '#333',
-          margin: 10, // make some extra space for the shape around the text
+          stroke: 'white',
+          margin: 1, // make some extra space for the shape around the text
           isMultiline: false, // don't allow newlines in text
           editable: true, // allow in-place editing by user
         },
@@ -130,7 +131,7 @@ function init() {
         // this tooltip Adornment is shared by all nodes
         toolTip: $('ToolTip',
           $(go.TextBlock,
-            { margin: 4 }, // the tooltip shows the result of calling nodeInfo(data)
+            { margin: 0 }, // the tooltip shows the result of calling nodeInfo(data)
             new go.Binding('text', '', nodeInfo)
           )
         ),
@@ -202,8 +203,8 @@ function init() {
           'Rectangle', // the rectangular shape around the members
           {
             fill: 'rgba(128,128,128,0.2)',
-            stroke: 'gray',
-            strokeWidth: 3,
+            stroke: 'black',
+            strokeWidth: 10,
             portId: '',
             cursor: 'pointer', // the Shape is the port, not the whole Node
             // allow all kinds of links from and to this port
@@ -215,13 +216,13 @@ function init() {
             toLinkableDuplicates: true,
           }
         ),
-        $(go.Placeholder, { margin: 10, background: 'black' }) // represents where the members are
+        $(go.Placeholder, { margin: 10, background: ' DarkSlateGray' }) // represents where the members are
       ),
       {
         // this tooltip Adornment is shared by all groups
         toolTip: $('ToolTip',
           $(go.TextBlock,
-            { margin: 4 },
+            { margin: 1 },
             // bind to tooltip, not to Group.data, to allow access to Group properties
             new go.Binding('text', '', groupInfo).ofObject()
           )
