@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama GoJS</title>
+    <link rel="stylesheet" href="GoJS-master/assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+  <script src="GoJS-master/release/go.js"></script>
+    <script id="code">
+      function init() {
+    // Since 2.2 you can also author concise templates with method chaining instead of GraphObject.make
+    // For details, see https://gojs.net/latest/intro/buildingObjects.html
+    const $ = go.GraphObject.make; // for conciseness in defining templates
+
+    myDiagram = new go.Diagram('myDiagramDiv', {
+      validCycle: go.CycleMode.NotDirected, // don't allow loops
+      // For this sample, automatically show the state of the diagram's model on the page
+      ModelChanged: (e) => {
+        if (e.isTransactionFinished) showModel();
+      },
+      'undoManager.isEnabled': true,
+    });
+
+    // This template is a Panel that is used to represent each item in a Panel.itemArray.
+    // The Panel is data bound to the item object.
+    var fieldTemplate = $(go.Panel,
+      'TableRow', // this Panel is a row in the containing Table
+      new go.Binding('portId', 'name'), // this Panel is a "port"
+      {
+        background: 'transparent', // so this port's background can be picked by the mouse
+        fromSpot: go.Spot.Right, // links only go from the right side to the left side
+        toSpot: go.Spot.Left,
+        // allow drawing links from or to this port:
+        fromLinkable: true,
+        toLinkable: true,
+      },
+      $(go.Shape,
+        {
+          width: 12,
+          height: 12,
+          column: 0,
+          strokeWidth: 2,
+          margin: 4,
+          // but disallow drawing links from or to this shape:
+          fromLinkable: false,
+          toLinkable: false,
+        },
+        new go.Binding('figure', 'figure'),
+        new go.Binding('fill', 'color')
+      ),
+      $(go.TextBlock,
+        {
+          margin: new go.Margin(10, 5),
+          column: 1,
+          font: 'bold 13px sans-serif',
+          alignment: go.Spot.Left,
+          // and disallow drawing links from or to this text:
+          fromLinkable: false,
+          toLinkable: false,
+        },
+        new go.Binding('text', 'name')
+      ),
+      $(go.TextBlock, { margin: new go.Margin(0, 5), column: 2, font: '13px sans-serif', alignment: go.Spot.Left }, new go.Binding('text', 'info'))
+    );
+
+    // This template represents a whole "record".
+    myDiagram.nodeTemplate = $(go.Node,
+      'Auto',
+      { copyable: false, deletable: false },
+      new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
+      // this rectangular shape surrounds the content of the node
+      $(go.Shape, { fill: '#EEEEEE' }),
+      // the content consists of a header and a list of items
+      $(go.Panel,
+        'Vertical',
+        // this is the header for the whole node
+        $(go.Panel,
+          'Auto',
+          { stretch: go.Stretch.Horizontal }, // as wide as the whole node
+          $(go.Shape, { fill: '#1570A6', stroke: null }),
+          $(go.TextBlock,
+            {
+              alignment: go.Spot.Center,
+              margin: 3,
+              stroke: 'white',
+              textAlign: 'center',
+              font: 'bold 12pt sans-serif',
+            },
+            new go.Binding('text', 'key')
+          )
+        ),
+        // this Panel holds a Panel for each item object in the itemArray;
+        // each item Panel is defined by the itemTemplate to be a TableRow in this Table
+        $(go.Panel,
+          'Table',
+          {
+            padding: 2,
+            minSize: new go.Size(100, 10),
+            defaultStretch: go.Stretch.Horizontal,
+            itemTemplate: fieldTemplate,
+          },
+          new go.Binding('itemArray', 'fields')
+        ) // end Table Panel of items
+      ) // end Vertical Panel
+    ); // end Node
+
+    myDiagram.linkTemplate = $(go.Link,
+      {
+        relinkableFrom: true,
+        relinkableTo: true, // let user reconnect links
+        toShortLength: 4,
+        fromShortLength: 2,
+      },
+      $(go.Shape, { strokeWidth: 1.5 }),
+      $(go.Shape, { toArrow: 'Standard', stroke: null })
+    );
+
+    myDiagram.model = new go.GraphLinksModel({
+      copiesArrays: true,
+      copiesArrayObjects: true,
+      linkFromPortIdProperty: 'fromPort',
+      linkToPortIdProperty: 'toPort',
+      nodeDataArray: [
+        {
+          key: 'Espacio de direcciones virtuales',
+          fields: [
+            { name: '60kñ64K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '56kñ60K', info:'X } Página virtual', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '52kñ56K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '48kñ52K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '44kñ48K', info: '7', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '40kñ44K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '36kñ40K', info: '5', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '32kñ36K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '28kñ32K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '24kñ28K', info: 'X', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '20kñ24K', info: '3', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '16kñ20K', info: '4', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '12kñ16K', info: '0', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '8kñ12K', info: '6', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '4kñ8K', info: '1', color: '#F7B84B', figure: 'Ellipse' },
+            { name: '0kñ4K', info: '2', color: '#F7B84B', figure: 'Ellipse' },
+          ],
+          loc: '0 0',
+        },
+        {
+          key: 'Dirección de memoria física',
+          fields: [
+            { name: '28Kñ32K', color: '#FFB900', figure: 'Diamond' },
+            { name: '24Kñ28K', color: '#FFB900', figure: 'Diamond' },
+            { name: '20Kñ24K', color: '#FFB900', figure: 'Diamond' },
+            { name: '16Kñ20K', color: '#FFB900', figure: 'Diamond' },
+            { name: '12Kñ16K', color: '#FFB900', figure: 'Diamond' },
+            { name: '8Kñ12K', color: '#FFB900', figure: 'Diamond' },
+            { name: '4Kñ8K', color: '#FFB900', figure: 'Diamond' },
+            { name: '0Kñ4K', info: '} Marco de página', color: '#FFB900', figure: 'Diamond' },
+          ],
+          loc: '280 0',
+        },
+      ],
+      linkDataArray: [
+      { from: 'Espacio de direcciones virtuales', fromPort: '44Kñ48K', to: 'Dirección de memoria física', toPort: '28Kñ32K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '36Kñ40K', to: 'Dirección de memoria física', toPort: '20Kñ24K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '20Kñ24K', to: 'Dirección de memoria física', toPort: '12Kñ16K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '16Kñ20K', to: 'Dirección de memoria física', toPort: '16Kñ20K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '12Kñ16K', to: 'Dirección de memoria física', toPort: '0Kñ4K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '8Kñ12K', to: 'Dirección de memoria física', toPort: '24Kñ28K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '4Kñ8K', to: 'Dirección de memoria física', toPort: '4Kñ8K' },
+      { from: 'Espacio de direcciones virtuales', fromPort: '0Kñ4K', to: 'Dirección de memoria física', toPort: '8Kñ12K' },
+    ],
+    });
+
+    showModel(); // show the diagram's initial model
+
+    function showModel() {
+      document.getElementById('mySavedModel').textContent = myDiagram.model.toJson();
+    }
+  }
+  window.addEventListener('DOMContentLoaded', init);  
+    </script>
+
+<div id="sample" style="margin: auto; padding: auto; ">
+  <div id="myDiagramDiv" style="border: solid 1px rgb(255, 0, 0); width: 750px; height: 750px; margin: auto; background-color: aquamarine;"></div>
+    <div>
+    <br>
+    <textarea id="mySavedModel" style="width: 600px; height: 250px; margin: auto; background-color: cadetblue;"></textarea>
+  </div>
+</div>
+
+    
+    <script src="GoJS-master/assets/js/goSamples.js"></script>
+</body>
+</html>
