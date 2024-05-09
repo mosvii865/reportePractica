@@ -1,0 +1,57 @@
+/* Estilos para el encabezado */
+#header {
+    text-align: center;
+    padding: 20px;
+    background-color: #cce4fc; /* Color de fondo */
+}
+
+#header h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#header h3 {
+    font-size: 20px;
+}
+
+#header img {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+}
+/* Estilos para los contenedores */
+.container {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Estilos para los títulos */
+h4 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #343a40; /* Color del texto */
+}
+
+/* Estilos para el contenido */
+p {
+    line-height: 1.6;
+    color: #000000; /* Color del texto */
+}
+
+/* Estilos para las listas */
+ul {
+    margin-top: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+/* Estilos para las imágenes */
+img {
+    margin: auto;
+    width: 350px;
+    height: 450px;
+    border-radius: 5px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Style.css">
+    <title>Reporte Practica Editores</title>
+</head>
+<body>
+    <div id="header">
+        <h2 class="imagen">
+            Universidad Autónoma de Ciudad Juárez
+            <br>
+            <img src="https://www.uacj.mx/acerca_de/Imagen-Institucional-UACJ_files/Escudo%20uacj%202015-azul-sin%20fondo.png" alt="Logo UACJ">
+        </h2>
+        <h3>
+            Instituto de Ingeniería y Tecnología
+        </h3>
+    </div>
+<br>
+    <div class="container bg-info">
+        <div class="row">
+            <h4>Introducción</h4>
+            RetroPie es una plataforma que te permite convertir tu Raspberry Pi en una máquina de juegos retro. Puedes jugar a tus juegos favoritos de arcade, consolas caseras y PC clásicos con una configuración mínima.
+            <br>
+            <b>Requisitos previos: </b>
+            <ul>
+                <li>Cualquier modelo de Raspberry Pi.</li>
+                <li>fuente de alimentación adecuada para Raspberry Pi (consulte la documentación de la fuente de alimentación para más detalles).</li>
+                <li>tarjeta microSD (consulte la documentación de la tarjeta SD para más detalles)</li>
+                <li>adaptador para conectar su tarjeta microSD con su ordenador habitual</li>
+                <li>cable de pantalla para conectar su Raspberry Pi a su monitor (consulte la documentación de la pantalla para más detalles)</li>
+                <li>monitor</li>
+                <li>unidad flash USB</li>
+                <li>mando de juegos USB</li>
+                <li>Descargar e instalar una aplicación como Win32DiskImager (para Windows), Apple Pi Baker (para macOS) o Etcher (para Linux).</li>
+                <li>La imagen del sistema RetroPie compatible con tu versión de Raspberry Pi.</li>
+                <br>
+                <p>Para la configuración inicial de la tarjeta SD y para añadir juegos a tu RetroPie, necesitarás:</p>
+                <li>Otro ordenador conectado a la red.</li>
+            </ul>
+        </div>
+    </div>
+<br>
+    <div class="container bg-warning">
+        <div class="row">
+            <h4>RetroPie</h4>
+            <b>¿Qué es?</b>
+            <br>
+            <p>RetroPie es un sistema de emulación de videojuegos libre para Raspberry Pi desarrollado íntegramente por la comunidad.</p>
+            <p>RetroPie no es ni un sistema operativo ni un emulador propiamente dichos, sino un paquete que trae instalado todo el software necesario para que un usuario sin conocimientos avanzados de informática pueda reproducir su colección de videojuegos antiguos. El sistema está compuesto por tres elementos:</p>
+            <ul>
+                <li>EmulationStation: Es la interfaz gráfica oficial del proyecto RetroPie. Destaca por su facilidad de uso y la posibilidad de añadir temas personalizados.</li>
+                <li>RetroArch: Es el front-end de referencia de Libretro API. Permite al jugador emular más de cincuenta sistemas en una única plataforma.</li>
+                <li>Raspbian: RetroPie se ejecuta en Raspbian, una distribución GNU/Linux basada en Debian.</li>
+            </ul>
+            <img src="IMG/infografia-retropie-1-768x576.png" alt="Imagen de referencia" style="height: 250px; width: 550px; margin: auto;">
+        </div>
+    </div>
+<br>
+    <div class="container bg-danger">
+        <div class="row">
+            <h4>Raspberry Pi</h4>
+            <b>¿Qué es?</b>
+            <br>
+            <p>La Raspberry Pi es una computadora de bajo costo y con un tamaño compacto, del porte de una tarjeta de crédito, puede ser conectada a un monitor de computador o un TV, y usarse con un mouse y teclado estándar. </p>
+            <p> Es capaz de hacer la mayoría de las tareas típicas de un computador de escritorio, desde navegar en internet, reproducir videos en alta resolución, manipular documentos de ofimática, hasta reproducir juegos.</p>
+            <img src="IMG/amp-raspberry.webp" alt="Raspberry Pi" style="height: 150px; width: 150px; margin: auto;">
+        </div>
+    </div>
+<br>
+
+<div class="container bg-success">
+    <div class="row">
+        <h3>Pasos para instalar RetroPie</h3>
+        <p>Lo primero que tenemos que hacer antes de configurar RetroPie en la Raspberry Pi es instalarlo. Para ello necesitamos descargar una imagen de este sistema operativo adecuada para nuestra Raspberry Pi.</p>
+        <p>Dependiendo de la Raspberry Pi en la que vayamos a instalar RetroPie tendremos que bajarnos la imagen adecuada. Actualmente existe una versión para Raspberry Pi y Raspberry Pi Zero, otra para Raspberry Pi 2 y 3 y otra imagen para Raspberry Pi 4. Todas te las puedes descargar del directorio de imágenes semanales de RetroPie.</p>
+        <p>Una vez tenemos descargada la imagen, pasaremos a grabarla. Los programas recomendados son:</p>
+        <ul>
+            <li>balenaEtcher</li>
+            <li>Raspberry Pi Imager</li>
+        </ul>
+        <p>Una vez grabado el sistema operativo, lo conectamos a la Raspberry Pi y lo arrancamos.</p>
+        <h3>Configurar RetroPie</h3>
+        <p>Una vez arrancado el sistema, nos aparecerá una pantalla de configuración.</p>
+        <p>Lo primero que nos pedirá es configurar un mando para poder movernos por los menús y poder jugar a los juegos. Por lo que es necesario tener conectado en un USB un mando o teclado para esta primera configuración de RetroPie.</p>
+        <img src="IMG/Configurando-los-mandos-en-RetroPie.webp" alt="Menu de mando RetroPie" style="height: 150px; width: 550px; margin: auto;">
+        <p>Lo primero que veremos es esta pantalla que nos pedirá que mantengamos un botón pulsado en nuestro dispositivo para poder configurarlo. Este puede ser un teclado o un mando. Una vez hemos hecho eso, veremos una pantalla donde se irán indicando todos los botones que tenemos que configurar.</p>
+        <img src="IMG/Asignando-los-botones-de-un-mando-en-RetroPie.webp" alt="Imagen de asignacion de botones">
+        <br>
+        <p>Ahora que ya tenemos nuestros mandos listos, es hora de configurar RetroPie para que tenga conexión a internet y podamos acceder a él desde otro ordenador en la misma red. Esto nos permitirá modificar cosas de la configuración de RetroPie desde ese otro ordenador, además de copiar ROMs y muchas cosas más.</p>
+        <p>Para configurar RetroPie para que use la WiFi de la Raspberry Pi, lo primero que tenemos que hacer es ir a raspi-config para ajustar la región en la que estamos. Esto lo encontraremos en el apartado RetroPie, dentro de los sistemas que tenemos instalados.</p>
+        <img src="IMG/Apartado-para-configurar-RetroPie-en-desde-EmulationStation-1536x864.webp" alt="Menu de configuracion">
+        <br>
+
+        <h3>Copiando ROMs a RetroPie</h3>
+        <p>Una vez hemos conectado la Raspberry Pi a internet, podemos consultar la IP de esta desde la opción Show IP del apartado RetroPie de EmulationStation.</p>
+        <p>Una vez que nos hemos quedado con la IP, nos conectaremos a través de otro ordenador donde tenemos los juegos para poder copiarlos.</p>
+        <p><i>Para ello es necesario tener instalado y configurado "Samba"</i></p>
+        <br>
+        <p>Cuando nos pidan el usuario y la contraseña de Samba debemos introducir pi como usuario y raspberry como contraseña. Una vez accedemos a la Raspberry Pi veremos las carpetas de ROMs, BIOS, configs y splashscreens. La carpeta que nos interesa ahora mismo es la de ROMs, donde tendremos una carpeta por cada sistema que soporta RetroPie. Si no está el sistema que quieres emular, quizás tengas que instalar el emulador, o es posible que RetroPie no lo soporte.</p>
+        <img src="IMG/Carpetas-de-ROMs-de-RetroPie.webp" alt="Carpetas de ROMs">
+        <p>Una vez hemos terminado de copiar las ROMs, pulsamos start y en el Menú principal de RetroPie vamos a Quit. En este menú tendremos opciones para apagar la Raspberry Pi, reiniciarla, salir de EmulationStation o reiniciarlo. En este caso lo que haremos será Reiniciar EmulationStation.</p>
+        <img src="IMG/Reiniciando-EmulationStation.webp" alt="Reiniciando RetroPie">
+        <p>Una vez se ha reiniciado EmulationStation, deberíamos ver los juegos que hemos añadido en los sistemas correspondientes.</p>
+
+        <h3>Jugar a las ROMs</h3>
+        <p>Normalmente, una vez tenemos el juego detectado por EmulationStation, lo elegimos, lo cargamos y funcionará correctamente. Pero en algunos sistemas necesitaremos también unos archivos que contienen la BIOS del sistema que vamos a emular. Una vez tenemos la BIOS para nuestro sistema, si es que nos hace falta y las ROMs, ya podemos decir que sí, que tenemos configurado RetroPie para jugar a juegos retro.</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+</body>
+</html>
